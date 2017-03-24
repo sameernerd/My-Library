@@ -27,6 +27,6 @@ public class NextPermutation {
 			if(value<ar[i])l=i;
 		}
 		swap(ar,k,l);
-		if(k!=l)reverse(ar,k+1,ar.length);  
+		reverse(ar,k+1,ar.length);  
 	}	
 }
