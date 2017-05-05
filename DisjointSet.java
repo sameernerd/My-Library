@@ -12,15 +12,20 @@ public class DisjointSet {
 	}
 	
 	void Union(long data1,long data2){
-		if(DisjointMap.get(new Long(data1))==DisjointMap.get(new Long(data2)))return;
-		if(DisjointMap.get(new Long(data1)).rank>=DisjointMap.get(new Long(data2)).rank){
-			DisjointMap.get(new Long(data2)).parent=DisjointMap.get(new Long(data1));
-			DisjointMap.get(new Long(data1)).rank++;
-		}
-		else if(DisjointMap.get(new Long(data2)).rank>DisjointMap.get(new Long(data1)).rank){
-			DisjointMap.get(new Long(data1)).parent=DisjointMap.get(new Long(data2));
-			DisjointMap.get(new Long(data2)).rank++;
-		}
+		Node node1=DisjointMap.get(data1);
+        Node node2=DisjointMap.get(data2);
+        
+        Node parent1=findSet(node1);
+        Node parent2=findSet(node2);
+        
+        if(parent1.data==parent2.data)return;
+        else if(parent1.rank>=parent2.rank){
+            if(parent1.rank==parent2.rank)parent1.rank++;
+            parent2.parent=parent1;
+        }
+        else{
+            parent1.parent=parent2;
+        }
 	}
 	
 	public long findSet(long data1){
