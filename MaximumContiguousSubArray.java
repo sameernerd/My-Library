@@ -39,7 +39,7 @@ public class MaximumSubArray {
 			maxsum[2]=ar[low];
 			return maxsum;
 		}
-		else mid=(high+low)/2;
+		else mid=(high-low+1)/2;
 		int left_sum=-10000,right_sum=-10000;
 		maxleft=MaxSubarray(ar,low,mid);
 		maxright=MaxSubarray(ar,mid+1,high);
