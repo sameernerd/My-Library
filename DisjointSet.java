@@ -1,8 +1,13 @@
 import java.util.*;
 
 public class DisjointSet {
-	HashMap<Long,Node> DisjointMap=new HashMap();
+	public class Node {
+	int rank;
+	Long data;
+	Node parent;
+	}
 	
+	HashMap<Long,Node> DisjointMap=new HashMap();
 	void makeSet(long data){
 		Node newNode=new Node();
 		newNode.data=data;
