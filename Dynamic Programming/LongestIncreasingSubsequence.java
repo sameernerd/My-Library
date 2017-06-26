@@ -31,11 +31,11 @@ public class dp {
 			R[i]=-1;
 		T[0]=0;
 		for(int i=1;i<n;i++){
-			if(ar[i]>ar[T[len]]){
+			if(ar[i]>=ar[T[len]]){
 				T[++len]=i;
 				R[T[len]]=T[len-1];
 			}
-			else if(ar[i]<ar[T[0]]){
+			else if(ar[i]<=ar[T[0]]){
 				T[0]=i;
 			}
 			else{
