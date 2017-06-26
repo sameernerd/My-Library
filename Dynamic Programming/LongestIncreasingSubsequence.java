@@ -12,9 +12,8 @@ public class dp {
 		while(i<n){
 			if(ar[j]<ar[i]){
 				length[i]=max(length[i],length[j]+1);
-				j++;
 			}
-			else j++;
+			j++;
 			if(j==i){
 				j=0;
 				i++;
