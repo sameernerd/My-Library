@@ -18,7 +18,7 @@ public class SieveOfEratosthenes {
 		}
 		c++;
 	}
-		for(int i=2;i<n;i++)
+		for(int i=2;i<=n;i++)
 			if(ar[i]!=-1)System.out.println(ar[i]);
 	}
 }
