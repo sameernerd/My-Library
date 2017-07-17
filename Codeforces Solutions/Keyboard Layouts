@@ -1,0 +1,33 @@
+import java.util.*;
+public class meramainmahan {
+
+	public static String solve2(String str1,String str2,String msg){
+		String encoded_msg="";
+		char search;
+		for(int i=0;i<msg.length();i++){
+			if(msg.charAt(i)<65){
+				encoded_msg=encoded_msg+""+msg.charAt(i);
+				continue;
+			}
+			if((int)msg.charAt(i)<97)search=(char)(msg.charAt(i)+32);			
+			else search=msg.charAt(i);
+			for(int j=0;j<str1.length();j++){
+				if(str1.charAt(j)==search){
+					if(msg.charAt(i)<97){
+							encoded_msg=encoded_msg+(char)(str2.charAt(j)-32);
+					}
+					else encoded_msg=encoded_msg+str2.charAt(j);
+				}
+			}
+		}
+		return encoded_msg;
+	}
+	public static void main(String[] args) {
+		Scanner in=new Scanner(System.in);
+		String str1=in.next();
+		String str2=in.next();
+		String msg=in.next();
+		System.out.println(solve2(str1,str2,msg));
+	}
+
+}
