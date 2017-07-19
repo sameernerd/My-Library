@@ -2,7 +2,7 @@ import java.util.Arrays;
 
 //Formula
 /*
- * Parent index=(index-2)/2
+ * Parent index=(childindex-1)/2
  * left-child=index*2+1
  * right-child=index*2+2
  */
@@ -20,7 +20,7 @@ public class MinHeap {
 	
 	private int  getLeftChildIndex(int parentIndex){return parentIndex*2+1;}
 	private int getRightChildIndex(int parentIndex){return parentIndex*2+2;}
-	private int getParentIndex(int childIndex){return (childIndex-2)/2;}
+	private int getParentIndex(int childIndex){return (childIndex-1)/2;}
 	
 	private boolean hasLeftChild(int parentIndex){return getLeftChildIndex(parentIndex)<size;}
 	private boolean hasRightChild(int parentIndex){return getRightChildIndex(parentIndex)<size;}
