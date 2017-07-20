@@ -5,29 +5,18 @@ public class meramainmahan {
 	
 	public static int solve(int n,int m,String ar[]){
 		int count=0;
-		int x1=-1,y1=-1,x2=-1,y2=-1;
 		int max_x=-1,max_y=-1;
-		int min_x=-1,min_y=-1;
+		int min_x=10000,min_y=1000;
 		int len=0;
 		boolean flag=false;
 		for(int i=0;i<n;i++){
 			for(int j=0;j<m;j++){
 				if(ar[i].charAt(j)=='W')flag=true;
-				else if(ar[i].charAt(j)=='B'&&x1==-1){
-					x1=i;
-					y1=j;
-					max_x=x1;
-					max_y=y1;
-					min_x=x1;
-					min_y=y1;
-				}
-				else if(ar[i].charAt(j)=='B'&&x1!=-1){
-					x2=i;
-					y2=j;
-					if(y2>max_y)max_y=y2;
-					if(x2>max_x)max_x=x2;
-					if(x2<min_x)min_x=x1;
-					if(y2<min_y)min_y=y2;
+				else if(ar[i].charAt(j)=='B'){
+					if(j>max_y)max_y=j;
+					if(i>max_x)max_x=i;
+					if(i<min_x)min_x=i;
+					if(j<min_y)min_y=j;
 				}
 			}
 		}
