@@ -1,0 +1,25 @@
+//Concept gcd(a!,b!) is a! where a is smaller than b
+
+import java.util.*;
+import java.io.*;
+
+public class meramainmahan {
+		
+	public static long solve(long a,long b){
+		long res=1;
+		long num=(a<b)?a:b;
+		for(int i=1;i<=num;i++)
+			res=res*i;
+		return res;
+		
+	}
+	
+	public static void main(String[] args) throws  IOException {
+		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+		String s[]=br.readLine().split(" ");
+		long a=Integer.parseInt(s[0]);
+		long b=Integer.parseInt(s[1]);
+		System.out.println(solve(a,b));
+	}
+
+}
