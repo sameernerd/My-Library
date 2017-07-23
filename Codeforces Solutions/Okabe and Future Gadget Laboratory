@@ -1,0 +1,42 @@
+//Constraint was small . Brute Force worked.
+import java.util.*;
+import java.io.*;
+
+public class meramainmahan {
+		
+	public static boolean solve(int n,int ar[][]){
+		boolean flag=false;
+		for(int i=0;i<n;i++){
+			for(int j=0;j<n;j++){
+				if(ar[i][j]!=1){
+					flag=false;
+					for(int x=0;x<n&&flag!=true;x++){
+						for(int y=0;y<n;y++){
+							if(ar[i][x]+ar[y][j]==ar[i][j]){
+								flag=true;
+								break;
+							}
+							else flag=false;
+						}
+					}
+					if(flag==false)return false;
+				}
+				
+			}
+		}
+		return true;
+	}
+	
+	public static void main(String[] args) throws  IOException {
+		Scanner in=new Scanner(System.in);
+		int n=in.nextInt();
+		int ar[][]=new int[n][n];
+		for(int i=0;i<n;i++){
+			for(int j=0;j<n;j++)
+				ar[i][j]=in.nextInt();
+		}
+		if(solve(n,ar))System.out.println("YES");
+		else System.out.println("NO");
+	}
+
+}
