@@ -1,0 +1,56 @@
+//Most optimized code coded by me till now.(Brute Force)
+import java.util.*;
+import java.io.*;
+public class meramainmahan {
+	
+	public static void solve(int m[],ArrayList<Integer> g,int c[]){
+		HashSet<Integer> set=new HashSet();
+		ArrayList<Integer> initials=new ArrayList();
+		HashSet<Integer> res=new HashSet();
+		int think,count=0,input,ans=0;
+			for(int j=0;j<c.length;j++){
+				think=g.get(0)-c[j];
+				initials.add(think);
+			}
+			for(int i=0;i<initials.size();i++){
+				input=initials.get(i);
+			    count=0;
+				for(int j=0;j<c.length;j++)
+					res.add(input+c[j]);
+				for(int k=0;k<g.size();k++){
+					if(res.contains(g.get(k)))count++;
+				}
+				if(count==g.size()){
+					set.add(input);
+					ans++;
+				}
+				res.clear();
+			}
+		System.out.println(set.size());
+	}
+	
+	public static void main(String[] args) throws NumberFormatException, IOException {
+		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+		String nums[]=new String[2];
+		nums=br.readLine().split(" ");
+		int k=Integer.parseInt(nums[0]);
+		int n=Integer.parseInt(nums[1]);
+		int marks[]=new int[k];
+		int cusum[]=new int[k];
+		ArrayList<Integer> guess=new ArrayList();
+		String nums1[]=new String[k];
+		nums1=br.readLine().split(" ");
+		for(int i=0;i<k;i++){
+			marks[i]=Integer.parseInt(nums1[i]);
+			if(i!=0)cusum[i]=marks[i]+cusum[i-1];
+			else cusum[i]=marks[i];
+		}
+		String nums2[]=new String[n];
+		nums2=br.readLine().split(" ");
+		for(int i=0;i<n;i++){
+			guess.add(Integer.parseInt(nums2[i]));
+		}
+		solve(marks,guess,cusum);
+	}
+
+}
