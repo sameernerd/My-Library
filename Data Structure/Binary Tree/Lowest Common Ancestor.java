@@ -4,7 +4,17 @@
 		else return root.data;
 	}
   
-  	//Largest Binary Search Tree in a Binary Trees
+	public Node lowestCommonAncestorBT(Node root,int d1,int d2){
+		if(root==null)return null;
+		if(root.data==d1||root.data==d2)return root;
+		Node left=lowestCommonAncestorBT(root.left,d1,d2);
+		Node right=lowestCommonAncestorBT(root.right,d1,d2);
+		if(left!=null&&right!=null)return root;
+		if(left==null&&right==null)return null;
+		return left!=null?left:right;
+	}
+
+	//Largest Binary Search Tree in a Binary Trees
 	private LargestBST largest(Node root){
 		if(root==null)return new LargestBST();
 		LargestBST left=largest(root.left);
@@ -20,9 +30,4 @@
 		l.min=root.right!=null?left.min:root.data;
 		l.max=root.left!=null?right.max:root.data;
 		return l;
-	}
-	public int largestBST(Node root){
-		LargestBST m=new LargestBST();
-		m=largest(root);
-		return m.size;
 	}
