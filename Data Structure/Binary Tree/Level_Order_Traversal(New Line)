@@ -1,0 +1,26 @@
+	//Printing each level in new line
+	public void levelOrderTravesrsal(Node root){
+		if(root==null)return;
+		Queue<Node> queue=new LinkedList<Node>();
+		Node current=root;
+		int current_count=0,level_count=1;
+		queue.add(current);
+		while(!queue.isEmpty()){
+			current=queue.poll();
+			if(current.left!=null){
+				queue.add(current.left);
+				current_count++;
+			}
+			if(current.right!=null){
+				queue.add(current.right);
+				current_count++;
+			}
+			level_count--;
+			if(level_count==0){
+				level_count=current_count;
+				current_count=0;
+				System.out.println(current.data);
+			}
+			else System.out.print(current.data+" ");
+		}
+	}
