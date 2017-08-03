@@ -1,0 +1,39 @@
+import java.util.*;
+import java.io.*;
+import java.math.*;
+
+import static java.lang.System.out;
+
+public class ContestMain {
+	private static int max=Integer.MIN_VALUE;
+	private static int min=Integer.MIN_VALUE;
+	private static Scanner in=new Scanner(System.in);
+	private static BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+	
+	public static void solve(long k,String n){
+		long ans=0,digit=57,count=0,sum=0;
+		int index=0,temp;
+		char nums[]=n.toCharArray();
+		for(int i=0;i<nums.length;i++){
+			sum=sum+nums[i]-48;
+		}
+		Arrays.sort(nums);
+			for(int i=0;i<nums.length;i++){
+				if(sum<k){
+					temp=nums[i]-48;
+					nums[i]=(char)57;
+					sum=sum-temp+nums[i]-48;
+					count++;
+				}
+				else break;
+			}
+		out.print(count);
+	}
+
+	public static void main(String[] args) throws IOException {	
+		long k=in.nextLong();
+		String n=in.next();
+		solve(k,n);
+	}
+	
+}
