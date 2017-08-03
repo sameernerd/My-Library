@@ -1,0 +1,30 @@
+import java.util.*;
+import java.io.*;
+import java.math.*;
+
+import static java.lang.System.out;
+
+public class ContestMain {
+	private static int max=Integer.MIN_VALUE;
+	private static int min=Integer.MIN_VALUE;
+	private static Scanner in=new Scanner(System.in);
+	private static BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+	
+	public static void solve(int s,int v1,int v2,int t1,int t2){
+		int first=s*v1+2*t1;
+		int second=s*v2+2*t2;
+		if(first>second)out.println("Second");
+		else if(second>first)out.println("First");
+		else out.println("Friendship");
+	}
+
+	public static void main(String[] args) throws IOException {	
+		int s=in.nextInt();
+		int v1=in.nextInt();
+		int v2=in.nextInt();
+		int t1=in.nextInt();
+		int t2=in.nextInt();
+		solve(s,v1,v2,t1,t2);
+	}
+	
+}
