@@ -1,0 +1,51 @@
+import java.util.*;
+import java.io.*;
+import java.math.*;
+ 
+import static java.lang.System.out;
+ 
+ class ContestMain {
+	private static int max=Integer.MIN_VALUE;
+	private static int min=Integer.MIN_VALUE;
+	private static Scanner in=new Scanner(System.in);
+	private static BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+	
+	public static void solve(int ar[],int n){
+		int count=1;
+		boolean flag=true;
+		for(int i=0;i<n;i++){
+			if(i==n-i-1&&ar[i]!=7){
+				flag=false;
+				break;
+			}
+			if(ar[i]!=ar[n-i-1]){
+				flag=false;
+				break;
+			}
+			else if(ar[i]==ar[n-1-i]){
+				if(count==8&&ar[i]>=8){
+					flag=false;
+					break;
+				}
+			}
+		    if(ar[i]==count){
+				if(count!=8)count++;
+			}
+		}
+		if(count==8&&flag)System.out.println("yes");
+		else System.out.println("no");
+	}
+ 
+	public static void main(String[] args) throws IOException {	
+	
+		int t=in.nextInt();
+		int n,ar[];
+		for(int i=0;i<t;i++){
+			n=in.nextInt();
+			ar=new int[n];
+			for(int j=0;j<n;j++)
+				ar[j]=in.nextInt();
+			solve(ar,n);
+		}
+	}
+} 
