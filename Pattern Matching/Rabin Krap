@@ -1,0 +1,34 @@
+	public void RabinKrap(String s,String pattern){
+		long pattern_hash=calculateHash(pattern);
+		long hash=-1;
+		int k;
+		for(int i=0;i<=s.length()-pattern.length();i++){
+				if(hash==-1){
+					hash=calculateHash(s.substring(i,i+pattern.length()));
+				}//abcabcabcabc
+				else hash=recalculateHash(hash,s.charAt(i-1),s.charAt(i+pattern.length()-1),pattern.length());
+				if(hash==pattern_hash){
+					for(k=0;k<pattern.length();k++){
+						if(pattern.charAt(k)!=s.charAt(i+k))break;
+					}
+					if(k==pattern.length())System.out.println(i);
+				}
+		}
+	}
+	
+	private long calculateHash(String s){
+		int count=0;
+		long hash=0;
+		for(int i=0;i<s.length();i++){
+			hash=hash+s.charAt(i)*(long)Math.pow(prime, count);
+			count++;
+		}
+		return hash;
+	}
+	
+	private long recalculateHash(long old_hash,int old_char,int new_char,int m){
+		long new_hash=old_hash-old_char;
+		new_hash=new_hash/prime;
+		new_hash+=(long)Math.pow(prime,m-1)*new_char;
+		return new_hash;
+	}
