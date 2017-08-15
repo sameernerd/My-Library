@@ -1,0 +1,34 @@
+
+public class Patterns {
+	
+	public int[] ZAlgorithm(String s){
+		int n=s.length();
+		int Z[]=new int[n];
+		int left=0,right=0;
+		for(int k=1;k<n;k++){
+			if(k>right){
+				left=right=k;
+				while(right<n&&s.charAt(right)==s.charAt(right-left)){
+					right++;
+				}
+				Z[k]=right-left;
+				right--;
+			}
+			else{
+				int c=k-left;
+				if(Z[c]+k<right+1){
+					Z[k]=Z[c];
+				}
+				else{
+					left=k;
+					while(right<n&&s.charAt(right)==s.charAt(right-left)){
+						right++;
+					}
+					Z[k]=right-left;
+					right--;
+				}
+			}
+		}
+		return Z;
+	}
+}
