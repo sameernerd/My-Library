@@ -5,9 +5,8 @@ public class SieveOfEratosthenes {
 		Scanner read=new Scanner(System.in);
 		int n=read.nextInt();
 		int ar[]=new int[n+1];
-		ar[0]=0;ar[1]=1;
 		int c=2;
-		for(int i=2;i<=n;i++)
+		for(int i=0;i<=n;i++)
 			ar[i]=i;
 		while(c*c<=n){
 			if(ar[c]!=-1){
