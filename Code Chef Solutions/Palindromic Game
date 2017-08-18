@@ -1,0 +1,68 @@
+import java.util.*;
+import java.io.*;
+import java.math.*;
+ 
+import static java.lang.System.out;
+ 
+ class ContestMain {
+	private static int max=Integer.MIN_VALUE;
+	private static int min=Integer.MAX_VALUE;
+	private static Scanner in=new Scanner(System.in);
+	private static BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+	
+	public static char solve(String s1,String s2){
+		//All string check
+		boolean flag=true;
+		for(int i=0;i<s1.length();i++){
+			if(s2.indexOf(s1.charAt(i))==-1){
+				flag=false;
+				break;
+			}
+		}
+		if(flag)return 'B';
+		HashMap<Character,Integer> hash=new HashMap();
+		flag=false;
+		for(int i=0;i<s1.length();i++){
+			if(s2.indexOf(s1.charAt(i))==-1){
+				if(!hash.containsKey(s1.charAt(i)))hash.put(s1.charAt(i),1);
+				else{
+					flag=true;
+					break;
+				}
+			}
+		}
+		if(flag)return 'A';
+		flag=false;
+		//Checking B is a subset of A and A a has at least one element different from B
+		for(int i=0;i<s2.length();i++){
+			if(s1.indexOf(s2.charAt(i))==-1){
+				flag=true;
+				break;
+			}
+		}
+		if(flag)return 'B';
+		else{
+			//Checking if at least one character in A that is not in B
+			for(int i=0;i<s1.length();i++){
+				if(s2.indexOf(s1.charAt(i))==-1){
+					flag=true;
+					break;
+				}
+				else flag=false;
+			}
+			if(flag)return 'A';
+			else return 'B';
+		}
+	}
+ 
+	public static void main(String[] args) throws IOException {	
+		int t=in.nextInt();
+		String str1,str2;
+		for(int i=0;i<t;i++){
+			str1=in.next();
+			str2=in.next();
+			System.out.println(solve(str1,str2));
+		}
+	}
+	
+}  
