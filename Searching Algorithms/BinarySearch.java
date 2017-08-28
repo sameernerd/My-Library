@@ -1,5 +1,5 @@
 static int binarySearch(int ar[],int l,int r,int x){
-		int mid,index;
+		int mid;
 		while(l<=r){
 			mid=l+(r-l)/2;
 			if(ar[mid]==x)return mid;
