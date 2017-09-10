@@ -1,0 +1,30 @@
+import java.util.*;
+import java.util.Map.Entry;
+import java.io.*;
+import java.math.*;
+ 
+import static java.lang.System.out;
+//import static java.lang.Math.pow;
+//import static java.lang.Math.sqrt;
+//import static java.lang.Math.ceil;
+import static java.lang.Math.abs;
+public class ContestMain {
+	private static long MOD=1000000007;
+	private static int zero=Integer.MIN_VALUE;
+	private static Scanner in=new Scanner(System.in);
+	private static BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+   
+	
+	public static void solve(String s){
+	}
+	public static void main(String[] args) throws IOException{
+		int n=in.nextInt();
+		int k=in.nextInt();
+		if(n==k)out.println(0+" "+0);
+		else if(k==0)out.println(0+" "+0);
+		else{
+			if(n/3>=k)out.println(1+" "+(2*k));
+			else out.print(1+" "+(n-k));
+		}
+	}	
+}
