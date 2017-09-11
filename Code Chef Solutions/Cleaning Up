@@ -1,0 +1,42 @@
+import java.util.*;
+import java.util.Map.Entry;
+import java.io.*;
+import java.math.*;
+ 
+import static java.lang.System.out;
+//import static java.lang.Math.pow;
+//import static java.lang.Math.sqrt;
+//import static java.lang.Math.ceil;
+import static java.lang.Math.abs;
+class ContestMain {
+	private static long MOD=1000000007;
+	private static int zero=Integer.MIN_VALUE;
+	private static Scanner in=new Scanner(System.in);
+	private static BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+   
+	
+	public static void solve(String s){
+	}
+	public static void main(String[] args) throws IOException{
+		int t=in.nextInt();
+		int n,m;
+		ArrayList<Integer> ar=new ArrayList();
+		for(int k=0;k<t;k++){
+			n=in.nextInt();
+			m=in.nextInt();
+			for(int i=1;i<=n;i++)
+				ar.add(i);
+			for(int i=0;i<m;i++)
+				ar.remove(ar.indexOf(in.nextInt()));
+			for(int i=0;i<ar.size();i++){
+				if((i+1)%2!=0)out.print(ar.get(i)+" ");
+			}
+			out.println();
+			for(int i=0;i<ar.size();i++){
+				if((i+1)%2==0)out.print(ar.get(i)+" ");
+			}
+			out.println();
+			ar.clear();
+		}
+	}
+}
