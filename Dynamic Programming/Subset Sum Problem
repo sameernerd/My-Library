@@ -1,0 +1,49 @@
+//Paying Up Question Codechef (Subset Sum DP used)
+import java.util.*;
+import java.util.Map.Entry;
+import java.io.*;
+import java.math.*;
+ 
+import static java.lang.System.out;
+//import static java.lang.Math.pow;
+//import static java.lang.Math.sqrt;
+//import static java.lang.Math.ceil;
+import static java.lang.Math.abs;
+class ContestMain {
+	private static long MOD=1000000007;
+	private static int zero=Integer.MIN_VALUE;
+	private static Scanner in=new Scanner(System.in);
+	private static BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+   
+	
+	public static void SubsetSum(int ar[],int n,int m){
+		boolean dp[][]=new boolean[n][m+1];
+		if(ar[0]<=m)dp[0][ar[0]]=true;
+		dp[0][0]=true;
+		for(int i=1;i<n;i++){
+			for(int j=0;j<=m;j++){
+				if(j==0)dp[i][j]=true;
+				else if(j<ar[i]){
+					dp[i][j]=dp[i-1][j];
+				}
+				else if(dp[i-1][j]==true)dp[i][j]=true;
+				else if(dp[i-1][j-ar[i]]==true)dp[i][j]=true;
+				else dp[i][j]=dp[i-1][j];
+			}
+		}
+		if(dp[n-1][m]==true)out.println("Yes");
+		else out.println("No");
+	}
+	public static void main(String[] args) throws IOException{
+		int t=in.nextInt();
+		int ar[],m,n;
+		for(int i=0;i<t;i++){
+			n=in.nextInt();
+			m=in.nextInt();
+			ar=new int[n];
+			for(int j=0;j<n;j++)
+				ar[j]=in.nextInt();
+			SubsetSum(ar,n,m);
+		}
+	}
+}
