@@ -1,0 +1,29 @@
+import java.util.*;
+import java.util.Map.Entry;
+import java.io.*;
+import java.math.*;
+
+class ContestMain {
+	public static void solve(String s){
+		String result="";
+		int j;
+		for(int i=0;i<s.length();i++){
+			for(j=0;j<result.length();j++){
+				if(s.charAt(i)>result.charAt(j))break;
+				else if(s.charAt(i)==result.charAt(j)){
+					j=-1;
+					break;
+				}
+			}
+			if(j==-1)continue;
+			result=result.substring(0,j)+""+s.charAt(i);
+		}
+		out.println(result);
+	}
+	public static void main(String[] args) throws IOException{
+		int n=in.nextInt();
+		String str=in.next();
+		solve(str);
+	}
+}
+ 
