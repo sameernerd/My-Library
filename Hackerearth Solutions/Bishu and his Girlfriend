@@ -1,0 +1,67 @@
+/*
+ * Remember a 2.0 student can know more than a 4.0 student.
+ * Grades don't determine intelligence, they test obedience. 
+ * I Never Give Up.
+ */
+import java.util.*;
+import java.io.*;
+
+import static java.lang.System.out;
+//import static java.lang.Math.pow;
+//import static java.lang.Math.sqrt;
+//import static java.lang.Math.ceil;
+//import static java.lang.Math.abs;
+public class ContestMain {
+	private static long MOD=1000000007;//10^9+7
+	private static final int N=(int) 2e5+5; //200005
+	private static Scanner in=new Scanner(System.in);
+	private static BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+	private static ArrayList<Integer> v[]=new ArrayList[N];
+	private static boolean mark[]=new boolean[N];
+	static int choice=Integer.MAX_VALUE;
+	static int d=Integer.MAX_VALUE;
+	static int trav=Integer.MAX_VALUE;
+	public static int dfs(int node,int parent,int ar[]){
+		mark[node]=true;
+		for(int next:v[node]){
+		    d=0;
+			if(!mark[next]){
+				d+=dfs(next,node,ar)+1;
+				if(ar[next]==1){
+				    if(d<trav){
+				        choice=next;
+				        trav=d;
+				    }
+				    else if(d==trav&&next<choice){
+				        choice=next;
+				    }
+				    return 0;
+				}
+		}
+	}
+	return d;
+ }
+
+	public static void solve(int ar[],int n,int k){
+		
+	}
+	public static void main(String[] args) throws IOException{
+		int n=in.nextInt();
+		int x,y;
+		int ar[]=new int[n+1];
+		for(int i=0;i<n-1;i++){
+			x=in.nextInt();
+			y=in.nextInt(); 
+			if(v[x]==null)v[x]=new ArrayList<Integer>();
+			if(v[y]==null)v[y]=new ArrayList<Integer>();
+			v[x].add(y);
+			v[y].add(x);
+		}
+		int q=in.nextInt();
+		for(int i=0;i<q;i++)
+			ar[in.nextInt()]=1;
+		dfs(1,0,ar);
+		out.println(choice);
+	}
+	
+}
