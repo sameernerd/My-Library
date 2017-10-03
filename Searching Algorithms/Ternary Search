@@ -1,0 +1,21 @@
+import java.util.*;
+import java.io.*;
+
+public class ContestMain {
+		if(r>=l){
+			int mid1=l+(r-l)/3;
+			int mid2=r-(r-1)/3;
+			if(ar[mid1]==x)return mid1;
+			if(ar[mid2]==x)return mid2;
+			if(x<ar[mid1])return ternarySearch(ar,l,mid1-1,x);
+			else if(x>ar[mid2])return ternarySearch(ar,mid2+1,r,x);
+			else return ternarySearch(ar,mid1+1,mid2-1,x);
+		}
+		return -1;
+	}
+	public static void main(String[] args) throws IOException{
+		int a[]={2,3,5,6,8,9,12,13,14};
+		System.out.println(ternarySearch(a, 0, a.length-1, 13)+1);
+    //Answer will be 8
+	}
+}
