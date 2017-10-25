@@ -1,0 +1,149 @@
+/*
+ * Remember a 2.0 student can know more than a 4.0 student.
+ * Grades don't determine intelligence, they test obedience. 
+ * I Never Give Up.
+ */
+import java.util.*;
+import java.io.*;
+
+import static java.lang.System.out;
+//import static java.lang.Math.pow;
+//import static java.lang.Math.sqrt;
+//import static java.lang.Math.ceil;
+import static java.lang.Math.abs;
+//import static java.lang.Math.min;
+//import static java.lang.Math.max;
+//import static java.lang.Math.floor;
+public class ContestMain {
+	private static long MOD=1000000007;//10^9+7 
+	private static final int N=(int) 2e5+5; //200005
+//	private static ArrayList<Integer> v[]=new ArrayList[N];
+//	private static boolean mark[]=new boolean [N];
+//	static int choice=Integer.MAX_VALUE,trav=Integer.MAX_VALUE;
+	
+	public static void solve(int a[],int n,int m){
+		int ar[]=new int[n+1];
+		int v,ans=1;
+		int used[]=new int[n+1];
+		ArrayList<Integer> alpha=new ArrayList();
+		for(int i=1;i<=n;i++)
+			alpha.add(i);
+		for(int i=0;i<m-1;i++){
+			v=a[i+1]-a[i];
+			if(v<=0)v=v+n;
+			ar[a[i]]=v;
+			if(used[v]==0)alpha.remove(alpha.indexOf(v));
+			if(used[v]!=0&&used[v]!=a[i]){
+				ans=-1;
+				break;
+			}
+			else used[v]=a[i];
+		}
+		if(ans==-1)out.println(-1);
+		else{
+			for(int i=1;i<=n&&ans!=-1;i++){
+				if(ar[i]==0&&!alpha.isEmpty()){
+					ar[i]=alpha.get(0);
+					alpha.remove(0);
+				}
+				else if(ar[i]==0&&alpha.isEmpty())ans=-1;
+			}
+			if(ans==-1)out.println(-1);
+			else{
+				for(int i=1;i<=n;i++)
+					out.print(ar[i]+" ");
+			}
+		}
+	}
+	
+	public static void main(String[] args) throws IOException{
+		Reader in=new Reader();
+		int n=in.nextInt();
+		int m=in.nextInt();
+		int a[]=new int[m];
+		for(int i=0;i<m;i++)
+			a[i]=in.nextInt();
+		solve(a,n,m);
+	}
+	
+	/* My Reader Class */
+	private static class Reader{
+		final private int BUFFER_SIZE=1<<16;
+		private DataInputStream din;
+		private byte buffer[];
+		private int bufferPointer,bytesRead;
+		
+		Reader(){
+			din=new DataInputStream(System.in);
+			buffer=new byte[BUFFER_SIZE];
+			bufferPointer=0;
+			bytesRead=0;
+		}
+		public String readLine() throws IOException{
+			byte buf[]=new byte[64];
+			int cnt=0,c;
+			while((c=read())!=-1){
+				if(c=='\n')break;
+				buf[cnt++]=(byte)c;
+			}
+			return new String(buf,0,cnt);
+		}
+		public int nextInt() throws IOException{
+			int num=0;
+			byte c=read();
+			while(c<=' '){
+				c=read();
+			}
+			boolean neg=(c=='-');
+			if(neg)c=read();
+			do{
+				num=num*10+c-'0';
+			}while((c=read())>='0'&&c<='9');
+			if(neg)return -num;
+			else return num;
+		}
+		public long nextLong() throws IOException{
+			long num=0;
+			byte c=read();
+			while(c<=' '){
+				c=read();
+			}
+			boolean neg=(c=='-');
+			if(neg)c=read();
+			do{
+				num=num*10+c-'0';
+			}while((c=read())>='0'&&c<='9');
+			if(neg)return -num;
+			else return num;
+		}
+		public double nextDouble() throws IOException{
+			double num=0,div=1;
+			byte c=read();
+			while(c<=' '){
+				c=read();
+			}
+			boolean neg=(c=='-');
+			if(neg)c=read();
+			do{
+				num=num*10+c-'0';
+			}while((c=read())>='0'&&c<='9');
+			if(c=='.'){
+				while((c=read())>='0'&&c<='9'){
+					num+=(c-'0')/(div*=10);
+				}
+			}
+			if(neg)return -num;
+			else return num;
+		}
+		private void fillBuffer() throws IOException{
+			bytesRead=din.read(buffer,bufferPointer=0,BUFFER_SIZE);
+			if(bytesRead==-1)
+				buffer[0]=-1;
+		}
+		private byte read() throws IOException{
+			if(bufferPointer==bytesRead)
+				fillBuffer();
+			return buffer[bufferPointer++];
+		}
+	}
+}
