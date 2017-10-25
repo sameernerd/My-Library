@@ -1,42 +1,36 @@
-//Implementing Binary Search Tree
 public class BinaryTree {
-	
-	public class Node{
+	private Node root;
+	private class Node{
 		int data;
 		Node left;
 		Node right;
 	}
-	
-	private Node GetNewNode(int data){
-		Node newNode=new Node();
-		newNode.data=data;
-		newNode.left=null;
-		newNode.right=null;
-		return newNode;
+	BinaryTree(){
+		root=null;
 	}
-	
-	public Node insert(Node root,int data){
+	public void insert(int value){
+		root=insert(root,value);
+	}
+	private Node insert(Node root,int value){
 		if(root==null){
-			root=GetNewNode(data);
-			return root;
+			root=new Node();
+			root.data=value;
+			root.left=null;
+			root.right=null;
 		}
-		else if(data<=root.data){
-			root.left=insert(root.left,data);
-		}
-		else if(data>root.data){
-			root.right=insert(root.right,data);
-		}
+		else if(value<root.data)root.left=insert(root.left,value);
+		else root.right=insert(root.right,value);
 		return root;
 	}
-	
-	
-	//Worst case for searching is O(n) in regular BST and O(logn) in Balanced BST
-	public Node search(int data,Node root){
+	public boolean search(int data){
+		if(search(data,root)!=null)return true;
+		else return false;
+	}
+	private Node search(int data,Node root){
 		Node node=null;
-		if(root.data==data)return root;
+		if(root==null||root.data==data)return root;
 		else if(data<root.data)node=search(data,root.left);
 		else node=search(data,root.right);
 		return node;
 	}
-	
 }
