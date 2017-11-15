@@ -33,4 +33,33 @@ public class BinaryTree {
 		else node=search(data,root.right);
 		return node;
 	}
+		public void delete(int e){
+		delete(e,root);
+	}
+	private Node minValueNode(Node root){
+		while(root.left!=null)root=root.left;
+		return root;
+	}
+	private Node delete(int item,Node root){
+		Node temp;
+		if(root==null){
+			System.out.println("Tree is empty");
+		}
+		else if(item<root.data)root.left=delete(item,root.left);
+		else if(item>root.data) root.right=delete(item,root.right);
+		else{
+			if(root.left==null){
+				temp=root.right;
+				return temp;
+			}
+			else if(root.right==null){
+				temp=root.left;
+				return temp;
+			}
+			temp=minValueNode(root.right);
+			root.data=temp.data;
+			root.right=delete(temp.data,root.right);
+		}
+		return root;
+	}
 }
