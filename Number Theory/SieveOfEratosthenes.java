@@ -1,23 +1,15 @@
-import java.util.*;
-public class SieveOfEratosthenes {
-
-	public static void main(String[] args) {
-		Scanner read=new Scanner(System.in);
-		int n=read.nextInt();
-		int ar[]=new int[n+1];
+public static void primes(boolean ar[],int n){
 		int c=2;
-		for(int i=0;i<=n;i++)
-			ar[i]=i;
+		ar[0]=true;
 		while(c*c<=n){
-			if(ar[c]!=-1){
+			if(!ar[c]){
 		for(int i=2*c;i<=n;i+=c){
-			if(ar[i]==-1)continue;
-			if(i!=c&&ar[i]%c==0)ar[i]=-1;
+			if(ar[i])continue;
+			if(i!=c&&i%c==0)ar[i]=true;
 		}
 		}
 		c++;
-	}
-		for(int i=2;i<=n;i++)
-			if(ar[i]!=-1)System.out.println(ar[i]);
-	}
+		}
 }
+
+//If false then prime else non prime..!!
