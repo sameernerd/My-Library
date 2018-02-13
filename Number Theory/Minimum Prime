@@ -1,0 +1,16 @@
+private static void minPrime(int min_prime[],int n){
+		for(int i=2;i*i<=n;i++){
+			for(int j=i*i;j<=n;j+=i){
+				if(min_prime[j]==0){
+					min_prime[j]=i;
+				}
+			}
+		}
+		for(int i=2;i<=n;i++){
+			if(min_prime[i]==0){
+				min_prime[i]=i;
+			}
+		}
+	}
+  
+  //We can use this in fast factorization.
