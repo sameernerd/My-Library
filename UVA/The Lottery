@@ -1,0 +1,33 @@
+Scanner in=new Scanner(System.in);
+		int n,m,ar[];
+		long cgcd;
+		long cnt,mult,temp;
+		ArrayList<Integer> subset=new ArrayList();
+		while(in.hasNext()){
+			n=in.nextInt();
+			m=in.nextInt();
+			ar=new int[m];
+			cnt=0;temp=0;
+			for(int i=0;i<m;i++)
+				ar[i]=in.nextInt();
+			for(int i=0;i<(1<<m);i++){
+				for(int j=0;j<m;j++){
+					if((i&(1<<j))>0)subset.add(ar[j]);
+				}
+				mult=-1;
+				for(int j=0;j<subset.size();j++){
+					if(mult==-1)mult=subset.get(j);
+					else {
+						cgcd=gcd(mult,subset.get(j));
+						mult=(mult*subset.get(j)/cgcd);
+					}
+				}
+				if(subset.size()>0){
+					if(subset.size()%2==0)cnt-=n/mult;
+					else cnt+=n/mult;
+				}
+				subset.clear();
+			}
+			ans.append(n-cnt+"\n");
+		}
+		out.print(ans);
