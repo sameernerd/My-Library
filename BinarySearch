@@ -1,0 +1,31 @@
+	private static int floor(ArrayList<Integer> ar,int val){
+		if(ar.size()==1){
+			if(ar.get(0)<=val)return ar.get(0);
+			return -1;
+		}
+		int l=0,r=ar.size()-1,mid;
+		while(l+1!=r){
+//			out.println(l+" "+r);
+			mid=(l+r)/2;
+			if(ar.get(mid)<val)l=mid;
+			else r=mid;
+		}
+		if(ar.get(r)<=val)return ar.get(r);
+		else if(ar.get(l)<val)return ar.get(l);
+		return -1;
+	}
+	private static int ceil(ArrayList<Integer> ar,int val){
+		if(ar.size()==1){
+			if(ar.get(0)>val)return ar.get(0);
+			return -1;
+		}
+		int l=0,r=ar.size()-1,mid;
+		while(l+1!=r){
+			mid=(l+r)/2;
+			if(ar.get(mid)<val)l=mid;
+			else r=mid;
+		}
+		if(ar.get(l)>val)return ar.get(l);
+		else if(ar.get(r)>val)return ar.get(r);
+		return -1;
+	}
