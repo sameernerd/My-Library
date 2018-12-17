@@ -52,7 +52,7 @@ public class ContestMain {
 //			this.c=c;
 //		}
 //	}
-	private static int dp[][]=new int[100][100];
+	private static int dp[][]=new int[1001][1001];
 	private static String s1,s2;
 	private static int lcs(int i,int j){
 		if(i>=s1.length()||j>=s2.length())return 0;
