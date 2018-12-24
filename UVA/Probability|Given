@@ -3,6 +3,8 @@
  * Grades don't determine intelligence, they test obedience. 
  * I Never Give Up.
  */
+ /* We can simply solve it by checking all the possbile 2^n possibiliies.The code written down is using bitmask and its not necessay.
+ But I enjoyed writing it */
 import java.util.*;
 import java.util.Map.Entry;
 import java.io.*;
