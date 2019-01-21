@@ -13,7 +13,7 @@ import java.text.*;
 import static java.lang.System.out;
 import static java.util.Arrays.*;
 import static java.lang.Math.*;
-public class ContestMain {
+public class Main {
 	private static Reader in=new Reader();
 	private static StringBuilder ans=new StringBuilder();
 	private static long MOD=1000000000+7;//10^9+7
