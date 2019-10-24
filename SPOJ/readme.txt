@@ -1,1 +1,1 @@
-SPOJ
+SPOJ problem solutions.
