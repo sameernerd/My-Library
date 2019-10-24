@@ -17,49 +17,8 @@ import static java.lang.Math.*;
 class ContestMain{
 	private static Reader in=new Reader();
 	private static StringBuilder ans=new StringBuilder();
-	private static long MOD=(long)1e9+7;
-	private static long INF=(long)1e12;
-	private static final int N=(int) (1e5+7); // 1e5+7
-    private static final double EPS=1e-9;
-    private static final int LIM=26;
-    private static final double PI=3.1415;
-    private static ArrayList<Integer> v[]=new ArrayList[N];
-//    private static int color[]=new int[N];
-	private static boolean mark[]=new boolean[N];
-//    private static BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
-//    private static ArrayList<Pair> v[]=new ArrayList[N];
-	private static long powmod(long x,long n){
-		if(n==0||x==0)
-			return 1;
-		else if(n%2==0)
-			return(powmod((x*x)%MOD,n/2));
-		else
-			return (x*(powmod((x*x)%MOD,(n-1)/2)))%MOD;
-	}
-	private static void shuffle(long[] arr){
-		for(int i=arr.length-1;i>=2;i--){
-			int x=new Random().nextInt(i-1);
-			long temp=arr[x];
-			arr[x]=arr[i];
-			arr[i]=temp;
-		}
-	}
-	private static void shuffle(int[] arr){
-		for(int i=arr.length-1;i>=2;i--){
-			int x=new Random().nextInt(i-1);
-			int temp=arr[x];
-			arr[x]=arr[i];
-			arr[i]=temp;
-		}
-	}
-    private static long gcd(long a, long b){
-        if(b==0)return a;
-        return gcd(b,a%b);
-    }
-//    private static boolean check(int x,int y){
-//        if((x>=0&&x<n)&&(y>=0&&y<m)&&mat[x][y]!='X'&&!visited[x][y])return true;
-//        return false;
-//    }
+	
+	/*Solution Start*/
     static int bit[]=new int[200007];
     public static long sum(int x){
     	long sum=0;
@@ -106,32 +65,8 @@ class ContestMain{
 		}
 		pn(ans);
 	}
-	static class Pair<T> implements Comparable<Pair>{
-		int l;
-		int r;
-		int req_node;
-		Pair(){
-			l=0;
-			r=0;
-		}
-		Pair(int k,int v,int o){
-			l=k;
-			r=v;
-			req_node=o;
-		}
-		@Override
-		public int compareTo(Pair o){
-			if(l!=o.l)return (int)(l-o.l);
-			return (int)(r-o.r);
-			
-		}
-		// Fenwick tree question comparator
-//        @Override
-//        public int compareTo(Pair o) {
-//            if(o.r!=r)return (int) (r-o.r);
-//            else return (int)(l-o.l);
-//        }
-	}
+	/*Solution End*/
+	
 	//Reader Class
 	static class Reader{
 		BufferedReader br;
